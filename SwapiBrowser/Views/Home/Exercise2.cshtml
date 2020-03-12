@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "1.2 Orphans of Alderaan Revisited";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    It sure seems there like should be an easier way to find data in a table, right? What if, instead of having our "phonebooks" organized by primary key, we had them organized by Homeworld instead?
+    What we're suggesting here is known as an index, and whether you were aware of it or not, we've already used two indexes. We just referred to them as tables.
+    In SQL Server, all<a href="#footnote-1">*</a> of the data lives on the "main" index, more accurately known as the <strong>clustered index</strong>.
+    Tables can only have one clustered index, since it is the source of truth for data in the table. Usually, the clustered index is based on the primary key of the table, but it doesn't have to be.
+</p>
+<p>
+    Next, let's do the same query, but this time we have a new, <strong>nonclustered index</strong> to help us out, the <a asp-controller="People" asp-action="ByHomeworldTree">By Homeworld</a> index.
+    This index contains a row for every row in the table, but filtered down to two fields&mdash;<code>Homeworld</code> and <code>Id</code>&mdash;and ordered by <code>Homeworld</code>. Note that when creating indexes, we don't have to specify the primary key
+    of the table, as it is included automatically. We could create this index using the following SQL.
+</p>
+<pre><code class="sql">create index PeopleByHomeworld on People(Homeworld)</code></pre>
+<p>
+    When we performed a table scan in the previous exercise, we followed the table linearly. Instead of using a linear data structure (e.g. array or linked list), indexes store the data in a tree structure.
+    Think binary search tree, but instead it uses a structure known as a B-Tree, which is basically a binary tree, but with a much larger number of children per node.
+    This way, we can find data in logarithmic time instead of linear time&mdash;<em>O(log n)</em> instead of <em>O(n)</em>.
+</p>
+<img src="https://cdn-images-1.medium.com/max/1600/1*pE4SEz7CprzFd7Zww-axfQ.jpeg" alt="An example of a B-Tree" style="margin-bottom: 32px;"/>
+<p>
+    Using this <a asp-controller="People" asp-action="ByHomeworldTree">new index</a>, go perform the same query.
+</p>
+
+<p>Once you have finished the exercise <a asp-action="Exercise2Recap">move forward to the recap.</a></p>
+
+
+<sup id="footnote-1">* Technically, this isn't completely true. Some larger datatypes like <code>nvarchar(max)</code> and <code>xml</code> are kept off row, and only pointers to them are stored in the clustered index.</sup>

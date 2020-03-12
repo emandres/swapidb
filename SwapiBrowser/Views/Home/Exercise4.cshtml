@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "2.2 Evacuating the Death Star - Revisited";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    On the previous exercise, you had to walk the index, finding the <code>Id</code> of all the people who fit the criteria,
+    then you had to flip over to the <code>People</code> table to get the fields you needed. SQL Server allows us to include
+    extra fields in the index.
+</p>
+<pre><code lang="sql">create index PeopleByGenderAndBirthYearCovering on People(Gender, BirthYear desc) include (Name, Mass) where BirthYear is not null</code></pre>
+<p>
+    When an index includes all of the fields necessary to perform a query without hitting the main table, it's known as a <strong>covering index.</strong>
+    Creating covering indexes can be a helpful step in optimizing expensive queries that are performed frequently. However, as in all things optimization,
+    you have to weigh the benefits against the possible downsides. The most visible downsize to adding more fields to an index
+    is the increased size of the index, and thus the entire table. Indexes also increase the amount of locking that is needed
+    when writing data, so you need to weigh query speed against write latency.
+</p>
+<p>Use the <a asp-controller="People" asp-action="ByGenderAndBirthYearCoveringTree">new index</a> to get the passenger list again, then <a asp-action="Conclusion">move forward.</a></p>

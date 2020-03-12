@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "1.1 Orphans of Alderaan - Recap";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    Phew, that was a bit of work, wasn't it? You should have found three people.
+</p>
+<ul>
+    <li>Leia Organa</li>
+    <li>Bail Prestor Organa</li>
+    <li>Raymus Antilles</li>
+</ul>
+<p>
+    What you've just done is the database equivalent of going through two separate phonebooks, looking for a specific number. First, you had to look through the
+    Planets table and find one named <code>Alderaan</code>. Luckily, in this case we didn't have to read through much data to find it, since Alderaan is on the first page.
+    Next, you had to go through every page of the People table looking for every row that had the <code>Homeworld</code> column with the appropriate value.
+</p>
+<p>
+    This process of going through every row on a table to find records that match your query is known as a <strong>table scan.</strong>
+    While on smaller tables it can be a viable option for running queries, usually we want to make it simpler to find the exact data we're looking for.
+    In the next exercise, we'll discover how.
+</p>
+<p>
+    Consider how your work might have changed if you didn't know that planet names were unique? What if it were like towns in the US, where over half of the states have a town name Springfield
+    (or Wisonsin, which has <a href="https://en.wikipedia.org/wiki/Springfield">four</a>)?
+</p>
+
+<a asp-action="Exercise2">Continue to Exercise 1.2</a>

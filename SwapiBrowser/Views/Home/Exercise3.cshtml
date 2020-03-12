@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "2.1 Evacuating the Death Star";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    By some highly improbable means explained only by poorly written Star Wars fan fiction, all of the people in the database are
+    on board the Death Star 2.5, when a fleet of rebel scum come to destroy the mobile battle station by blowing up the reactor. Again.
+    Turns out that the red tape necessary to fix that particular gap in the defenses hasn't yet been overcome.
+</p>
+<p>
+    Empire leadership, painfully aware that they're sitting ducks when faced by a ragtag group of unlikely heroes, decide to evacuate the Death Star.
+    Unfortunately, they only have escape vessels sufficient to evacuate 15 people. Following well established maritime tradition, women and children will be evacuated first.
+</p>
+<strong>Caveats</strong>
+<ul>
+    <li>Priority should be decided based on gender (alphabetically, ascending), followed by BirthYear (numeric, descending).</li>
+    <li>Since not all people in the Star Wars universe are humanoid, genders include <code>male</code>, <code>female</code>, <code>hermaphrodite</code>, and <code>n/a</code> for droids.</li>
+    <li>Birth Years are represented as years before the battle of Yavin. Therefore, all birth years are negative.</li>
+    <li>People with unknown birth years are excluded from the evacuation ranking, due to clerical mistakes made by the administrative staff.</li>
+</ul>
+<p>
+    To help you perform this query, a new index is available to you: <a asp-controller="People" asp-action="ByGenderAndBirthYearTree">PeopleByGenderAndBirthYearDesc</a>.
+    This index is based on two columns, <code>Gender</code> and <code>BirthYear</code>, with <code>BirthYear</code> sorted in descending order.
+    We could create this database with the following SQL.
+</p>
+<pre><code class="sql">create index PeopleByGenderAndBirthYearDesc on People(Gender, BirthYear desc) where BirthYear is not null</code></pre>
+<p>
+    Did you know that you can create <strong>filtered indexes</strong>? Well, now you do. This is commonly used to exclude records with null columns, as we did here, but that's not all you can do.
+</p>
+<p>
+    To properly prepare the ship, you will need to the know the name and mass of each passenger.
+    Once you've assembled the passenger list using the <a asp-controller="People" asp-action="ByGenderAndBirthYearTree">new index</a>, check your answer on the <a asp-action="Exercise3Recap">next page.</a>
+</p>

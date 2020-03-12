@@ -1,0 +1,25 @@
+﻿@model SwapiBrowser.Domain.Person
+
+@{
+    ViewBag.Title = "Person";
+    Layout = "_Layout";
+}
+
+<h2>Person @Model.Id</h2>
+
+<dl>
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+    <dt>Gender</dt>
+    <dd>@Model.Gender</dd>
+    <dt>Skin Color</dt>
+    <dd>@Model.SkinColor</dd>
+    <dt>Hair Color</dt>
+    <dd>@Model.HairColor</dd>
+    <dt>Eye Color</dt>
+    <dd>@Model.EyeColor</dd>
+    <dt>Height</dt>
+    <dd>@Model.Height</dd>
+    <dt>Mass</dt>
+    <dd>@Model.Mass</dd>
+</dl>

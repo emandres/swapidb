@@ -1,0 +1,29 @@
+﻿@model SwapiBrowser.Domain.Planet
+
+@{
+    ViewBag.Title = "Planet";
+    Layout = "_Layout";
+}
+
+<h2>Planet @Model.Id</h2>
+
+<dl>
+    <dt>Name</dt>
+    <dd>@Model.Name</dd>
+    <dt>Climate</dt>
+    <dd>@Model.Climate</dd>
+    <dt>Surface Water</dt>
+    <dd>@Model.SurfaceWater</dd>
+    <dt>Terrain</dt>
+    <dd>@Model.Terrain</dd>
+    <dt>Diameter</dt>
+    <dd>@Model.Diameter</dd>
+    <dt>Gravity</dt>
+    <dd>@Model.Gravity</dd>
+    <dt>Rotation Period</dt>
+    <dd>@Model.RotationPeriod</dd>
+    <dt>Orbital Period</dt>
+    <dd>@Model.OrbitalPeriod</dd>
+    <dt>Population</dt>
+    <dd>@Model.Population</dd>
+</dl>

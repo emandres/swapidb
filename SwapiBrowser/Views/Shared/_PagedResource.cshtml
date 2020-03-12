@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title - Page @ViewBag.Page</h2>
+
+@RenderBody()
+
+<nav>
+    <ul class="pagination">
+        @{
+            var page = (int) ViewBag.Page;
+            var totalRows = (int) ViewBag.TotalRows;
+            var totalPages = (int) Math.Ceiling(totalRows / 10m);
+        }
+
+        <li class="page-item @(page > 1 ? "" : "disabled")"><a class="page-link" asp-route-page="@(ViewBag.Page - 1)">&laquo;</a></li>
+        @for (int i = 1; i <= totalPages; i++)
+        {
+            <li class="page-item @(i == page ? "active" : "")"><a class="page-link" asp-route-page="@i">@i</a></li>
+        }
+        <li class="page-item @(page < totalPages ? "" : "disabled")"><a class="page-link" asp-route-page="@(ViewBag.Page + 1)">&raquo;</a></li>
+    </ul>
+</nav>

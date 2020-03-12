@@ -1,0 +1,27 @@
+﻿@model System.Collections.Generic.List<string>
+
+@{
+    ViewBag.Title = "People by Gender and Birth Year Index (Covering)";
+    Layout = "_Layout";
+}
+
+<h2>People by Homeworld Index</h2>
+
+<p>This page represents the tree structure of the index, but since it's hard to draw a tree in HTML, we're just going to have a link to the rows for each value. Use your imagination for what the tree structure might look like.</p>
+<p>You can also see the whole index in <a asp-action="ByHomeworld">linear order</a>, if you like.</p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Gender</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var gender in Model)
+    {
+        <tr>
+            <td><a asp-action="ByGenderAndBirthYearCovering" asp-route-gender="@gender">@gender</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

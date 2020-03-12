@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h1>SWAPI Database</h1>
+
+    <h2>What is SWAPI?</h2>
+    <p>
+        SWAPI stands for a Star Wars API, an online, open source database of facts about the Star Wars universe. This exercise uses a database derived from the fixtures available in the <a href="https://github.com/phalt/swapi">git repository</a>.
+    </p>
+
+    <h2>Objective</h2>
+    <p>
+        The purpose of these exercises is to help you think like a database. You will be given a series of queries to perform by visiting the provided pages.
+    </p>
+
+    <h2>Summary</h2>
+    <p>
+        Throughout these exercises, we'll use a phonebook metaphor when thinking about how a database stores data. It's a fairly apt metaphor,
+        since a phonebook is just a database that the phone company decided to print out and drop on your driveway like it's 1997.
+        The phone book has an inherent ordering to it&mdash;usually last name, followed by first name. A phone book has many pages with multiple records per page.
+    </p>
+    <p>
+        Databases share these characteristics. The order in which records are kept greatly affects the way we approach getting data out.
+        If I need to find a given person's phone number, and I know their first and last name, no problem. I just open the book to
+        somewhere close to where I would expect to find their last name. From there, I leaf forward or backward until I find the page.
+        This is a pretty standard <a href="https://en.wikipedia.org/wiki/Binary_search_algorithm">binary search algorithm</a>.
+    </p>
+    <p>
+        But what if I get a voicemail from someone who left their number, but not their name? How would I find their name? This is a much more tedious prospect.
+        There is no way to correlate phone number to name, so I'm stuck going through the phone book one page at a time.
+        We'll discuss some ways to make this tedious task easier.
+    </p>
+    <p>
+        Besides the ordering, there's another similarity that is rather on the nose&mdash;<strong>pages.</strong> A database engine doesn't
+        just point to a particular location on disk and declare that the next <em>n</em> gigabytes belong to the given table. Instead,
+        it organizes memory&mdash;be it volatile or non-volatile&mdash;into pages. SQL Server uses 8kb pages, but the size is more of an
+        implementation detail than something we need to keep in mind all the time. By breaking down address space into pages,
+        the engine can cache more effectively.
+    </p>
+    <p>
+        Let's step into the role of a database engine serving requests. You'll be given some tasks to perform and access to the tables.
+        You will also need somewhere to take notes - pen and paper, a text editor, or a spreadsheet. Good luck, and may the force be with you.
+    </p>
+
+    <h2>Exercises</h2>
+    <ul class="list-unstyled">
+        <li><a asp-action="Exercise1">1.1 Orphans of Alderaan</a></li>
+        <li><a asp-action="Exercise2">1.2 Orphans of Alderaan&mdash;Revisited</a></li>
+        <li><a asp-action="Exercise3">2.1 Evacuating the Death Star</a></li>
+        <li><a asp-action="Exercise4">2.2 Evacuating the DeathStar&mdash;Revisited</a></li>
+    </ul>
+</div>

@@ -1,0 +1,47 @@
+﻿@model List<SwapiBrowser.Domain.Person>
+
+@{
+    ViewBag.Title = "People";
+    Layout = "_PagedResource";
+}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Skin Color</th>
+        <th>Hair Color</th>
+        <th>Eye Color</th>
+        <th>Height</th>
+        <th>Mass</th>
+        <th>Birth Year</th>
+        <th>Homeworld</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var person in Model)
+    {
+        <tr>
+            <td><a asp-action="Get" asp-route-id="@person.Id">@person.Id</a></td>
+            <td>@person.Name</td>
+            <td>@person.Gender</td>
+            <td>@person.SkinColor</td>
+            <td>@person.HairColor</td>
+            <td>@person.EyeColor</td>
+            <td>@person.Height</td>
+            <td>@person.Mass</td>
+            <td>@person.BirthYear</td>
+            <td><a asp-controller="Planets" asp-action="Get" asp-route-id="@person.Homeworld">@person.Homeworld</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@* <h3>Indexes</h3> *@
+@* <ul> *@
+@*     <li><a asp-action="ByHomeworldTree">By Homeworld</a></li> *@
+@*     <li><a asp-action="ByGenderAndBirthYearTree">By Gender and Birth Year</a></li> *@
+@*     <li><a asp-action="ByGenderAndBirthYearCoveringTree">By Gender and Birth Year (Covering)</a></li> *@
+@* </ul> *@

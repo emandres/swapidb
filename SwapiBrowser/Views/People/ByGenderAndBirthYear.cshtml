@@ -1,0 +1,26 @@
+﻿@model List<SwapiBrowser.Domain.PersonByGenderAndBirthYearIndexRow>
+
+@{
+    ViewBag.Title = "People by Gender and Birth Year Index";
+    Layout = "_PagedResource";
+}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Gender</th>
+        <th>BirthYear</th>
+        <th>Id</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var row in Model)
+    {
+        <tr>
+            <td>@row.Gender</td>
+            <td>@row.BirthYear</td>
+            <td><a asp-action="Get" asp-route-id="@row.Id">@row.Id</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

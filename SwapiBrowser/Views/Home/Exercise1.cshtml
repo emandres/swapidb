@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "1.1 Orphans of Alderaan";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    Following the destruction of Alderaan by the Empire, many people were left without a homeworld. Find the names of all the people from the planet Alderaan.
+</p>
+
+<strong>Hint</strong>
+<p>Think of the SQL you would write to perform this query. It might look something like this&mdash;</p>
+
+<pre><code class="sql">select
+    people.Name
+from Planets planets
+    join People people on planets.Id = people.Homeworld
+where planets.Name = 'Alderaan'</code></pre>
+
+You can find the data you need in the <a asp-controller="People" asp-action="Index">People</a> and <a asp-controller="Planets" asp-action="Index">Planets</a> tables.
+Once you have an answer, <a asp-action="Exercise1Recap">move on</a>.

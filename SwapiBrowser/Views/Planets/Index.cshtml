@@ -1,0 +1,40 @@
+﻿@model List<SwapiBrowser.Domain.Planet>
+
+@{
+    ViewBag.Title = "Planets";
+    Layout = "_PagedResource";
+}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Climate</th>
+        <th>Surface Water</th>
+        <th>Terrain</th>
+        <th>Diameter</th>
+        <th>Gravity</th>
+        <th>Rotation Period</th>
+        <th>Orbital Period</th>
+        <th>Population</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td><a asp-action="Get" asp-route-id="@p.Id">@p.Id</a></td>
+            <td>@p.Name</td>
+            <td>@p.Climate</td>
+            <td>@p.SurfaceWater</td>
+            <td>@p.Terrain</td>
+            <td>@p.Diameter</td>
+            <td>@p.Gravity</td>
+            <td>@p.RotationPeriod</td>
+            <td>@p.OrbitalPeriod</td>
+            <td>@p.Population</td>
+        </tr>
+    }
+    </tbody>
+</table>

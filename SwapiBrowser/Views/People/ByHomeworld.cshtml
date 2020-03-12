@@ -1,0 +1,24 @@
+﻿@model List<SwapiBrowser.Domain.PersonHomeworldIndexRow>
+
+@{
+    ViewBag.Title = "People by Homeworld";
+    Layout = "_PagedResource";
+}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Homeworld</th>
+        <th>Id</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var row in Model)
+    {
+        <tr>
+            <td><a asp-controller="Planets" asp-action="Get" asp-route-id="@row.Homeworld">@row.Homeworld</a></td>
+            <td><a asp-action="Get" asp-route-id="@row.Id">@row.Id</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
